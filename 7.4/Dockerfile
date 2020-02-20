@@ -32,8 +32,7 @@ RUN apk add --no-cache \
     openssh-client \
     postgresql-libs \
     rsync \
-    zlib-dev \
-    libzip-dev
+    zlib-dev
 
 # Install PECL and PEAR extensions
 RUN pecl install \
@@ -50,8 +49,6 @@ RUN docker-php-ext-enable \
 # Configure php extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
-RUN docker-php-ext-configure zip --with-libzip
-
 RUN docker-php-ext-install \
     bcmath \
     calendar \
@@ -67,9 +64,7 @@ RUN docker-php-ext-install \
     pcntl \
     tokenizer \
     xml \
-    gd \
     zip \
-    bcmath
 
 # Install composer
 ENV COMPOSER_HOME /composer
